@@ -20,12 +20,18 @@ public class User {
     private Point currentPoint;
     private MoveEvent event;
     private Ticker ticker;
+    private Army army;
+
+    public GoldResource getResource() {
+        return resource;
+    }
 
     public User() {
         this.userId = UUID.randomUUID();
         this.resource = new GoldResource();
         this.currentPoint= new Point(0,0);
         this.ticker= new Ticker();
+        this.army= new Army();
     }
 
     public Point getCurrentPoint() {
