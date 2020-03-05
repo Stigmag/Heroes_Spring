@@ -22,6 +22,14 @@ public class User {
     private Ticker ticker;
     private Army army;
 
+    public UUID getUserId() {
+        return userId;
+    }
+
+    public Army getArmy() {
+        return army;
+    }
+
     public GoldResource getResource() {
         return resource;
     }
@@ -48,7 +56,7 @@ public class User {
         Point startPoint = map.getStartPoint();
         Point finishPoint = map.getFinnishPoint();
         List<Point> path = WayFinder.foundWay(map, startPoint, finishPoint);
-       if( doStep(path)) return WAIT;
+       if( !doStep(path)) return WAIT;
         return ACTIVE;
 
     }

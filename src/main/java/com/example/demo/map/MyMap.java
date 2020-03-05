@@ -2,6 +2,8 @@ package com.example.demo.map;
 
 import org.springframework.stereotype.Component;
 
+import java.util.UUID;
+
 @Component
 public class MyMap {
 private Building building;
@@ -36,9 +38,15 @@ private Building building;
     byte meadow=110;
     byte swamp=111;
     byte place=(byte)1111;
+    private UUID mapId;
 
     public MyMap() {
+        this.mapId= UUID.randomUUID();
 
+    }
+
+    public UUID getMapId() {
+        return mapId;
     }
 
     public  byte[][] getMapMatrix()
