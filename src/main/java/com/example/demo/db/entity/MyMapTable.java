@@ -14,15 +14,12 @@ public class MyMapTable implements Serializable {
 
 
     @Id
-    @Column(name = "id")
-    private UUID id;
+    @Column(name = "mapId")
+    private UUID mapId;
 
-    @OneToOne (optional=false, cascade=CascadeType.ALL)
-    @JoinColumn (name="game_id")
-    private GameTable figureId;
 
-    @ManyToOne (optional=false, cascade=CascadeType.ALL)
-    @JoinColumn (name="id_Game")
+
+    @OneToOne (mappedBy = "mapId",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private GameTable gameId;
 
     @Column(name = "state_Map")
@@ -32,11 +29,11 @@ public class MyMapTable implements Serializable {
 
     public MyMapTable(String stateMap, UUID mapID) {
         this.stateMap = stateMap;
-        this.id = mapID;
+        this.mapId = mapID;
     }
 
     public UUID getId() {
-        return id;
+        return mapId;
     }
 
 
@@ -48,6 +45,9 @@ public class MyMapTable implements Serializable {
 
     public void setGameId(GameTable gameId) {
         this.gameId = gameId;
+    }
+
+    public MyMapTable() {
     }
 }
 

@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.game.Army;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 

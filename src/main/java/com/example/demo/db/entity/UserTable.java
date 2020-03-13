@@ -18,12 +18,12 @@ public class UserTable implements Serializable {
     private UUID userId;
 
 
-    @ToString.Exclude
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "game_id", nullable = false)
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "game_id")
     private GameTable game;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<SavedGameTable> savedGames;
 
     @Column(name = "army_state")
@@ -40,6 +40,9 @@ public class UserTable implements Serializable {
 
     public void setGame(GameTable game) {
         this.game = game;
+    }
+
+    public UserTable() {
     }
 }
 

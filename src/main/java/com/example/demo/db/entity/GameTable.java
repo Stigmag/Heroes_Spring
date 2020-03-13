@@ -1,9 +1,6 @@
 package com.example.demo.db.entity;
 
-import com.example.demo.GameState;
-import com.example.demo.map.MyMap;
-import lombok.Builder;
-import lombok.ToString;
+import com.example.demo.game.GameState;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,12 +10,16 @@ import java.util.UUID;
 @Entity
 @Table(name="Game_Table")
 
-@ToString(exclude = {"game"})
 
-@PersistenceContext(type=PersistenceContextType.EXTENDED)
+
+
+
+
 public class GameTable implements Serializable {
+
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Column(name = "game_id")
     private UUID gameId;
 
@@ -30,15 +31,20 @@ public class GameTable implements Serializable {
 
     private int countOfDays;
 
-    @OneToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "id")
+    @OneToOne(optional = false, cascade = CascadeType.ALL ,fetch = FetchType.LAZY)
+    @JoinColumn(name = "mapId")
     private MyMapTable mapId;
 
-    @OneToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "saved_Game_Id")
-    private SavedGameTable savedGameId;
+    public void setUser(List<UserTable> user) {
+        this.user = user;
+    }
 
-    @OneToMany(mappedBy = "game", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    public void setMapId(MyMapTable mapId) {
+        this.mapId = mapId;
+    }
+
+    @OneToMany(mappedBy = "game", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+
     private List<UserTable> user;
 
 
@@ -50,5 +56,6 @@ this.countOfDays=countOfDays;
     }
 
     public GameTable() {
+
     }
 }

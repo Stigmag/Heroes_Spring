@@ -1,17 +1,20 @@
-package com.example.demo;
+package com.example.demo.game;
 
+import com.example.demo.game.Army;
+import com.example.demo.game.GameState;
+import com.example.demo.game.MoveEvent;
+import com.example.demo.game.Ticker;
 import com.example.demo.map.MyMap;
 import com.example.demo.map.Point;
 import com.example.demo.map.WayFinder;
 import com.example.demo.resource.GoldResource;
-import com.sun.xml.bind.v2.TODO;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.UUID;
 
-import static com.example.demo.GameState.ACTIVE;
-import static com.example.demo.GameState.WAIT;
+import static com.example.demo.game.GameState.ACTIVE;
+import static com.example.demo.game.GameState.WAIT;
 
 @Component
 public class User {

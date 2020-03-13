@@ -3,27 +3,31 @@ package com.example.demo.db.entity;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
-@Table(name="Game_Table")
+@Table(name="Saved_Game_Table")
 
 
 
 
-@PersistenceContext(type=PersistenceContextType.EXTENDED)
+
 public class SavedGameTable {
 
     @Id
+    // @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "saved_Game_Id")
-    private int userId;
+    private UUID savedGameId;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "UserId", nullable = false)
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "userId")
     private UserTable user;
 
-    @OneToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "game_id")
-    private GameTable gameId;
 
+
+    public SavedGameTable(UUID id) {
+        this.savedGameId=id;
+
+    }
 }

@@ -4,7 +4,7 @@ server:
   ## PostgreSQL
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/spring_test
+    url: jdbc:postgresql://localhost:5432/Heroes
     username: postgres
     password: maximum ride
 

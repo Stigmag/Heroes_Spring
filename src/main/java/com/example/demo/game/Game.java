@@ -1,19 +1,16 @@
-package com.example.demo;
+package com.example.demo.game;
 
 
-import com.example.demo.db.entity.GameTable;
 import com.example.demo.map.MyMap;
 import com.example.demo.map.Point;
 
-import com.example.demo.resource.DataController;
-import lombok.Data;
 import org.springframework.stereotype.Component;
 
 
 
 import java.util.UUID;
 
-import static com.example.demo.GameState.*;
+import static com.example.demo.game.GameState.*;
 
 @Component
 
@@ -24,19 +21,38 @@ private UUID gameId;
     private final MyMap map;
     private User user;
     private int countOfDays;
-
+private GameState state;
     public Game( ) {
         this.gameId= UUID.randomUUID();
         this.map = new MyMap();
         this.countOfDays = 0;
         this.user= new User();
+
     }
 
 
+    public UUID getGameId() {
+        return gameId;
+    }
 
+    public MyMap getMap() {
+        return map;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public int getCountOfDays() {
+        return countOfDays;
+    }
+
+    public GameState getState() {
+        return state;
+    }
 
     public void start() {
-        GameState state = ACTIVE;
+       state = ACTIVE;
 
         while (state == ACTIVE) {
 
