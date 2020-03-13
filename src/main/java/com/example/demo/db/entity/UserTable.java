@@ -6,6 +6,7 @@ import lombok.ToString;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -26,11 +27,13 @@ public class UserTable implements Serializable {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<SavedGameTable> savedGames;
 
-    @Column(name = "army_state")
-    private String armyState;
 
-    public UserTable(UUID userId, String armyState) {
-        this.armyState= armyState;
+    @ManyToMany(mappedBy = "users")
+    Set<GameMapTable> likes;
+
+
+    public UserTable(UUID userId) {
+
         this.userId=userId;
     }
 

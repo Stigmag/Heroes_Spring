@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserTable save(User user) {
 
-        return userRepository.saveAndFlush( new UserTable(user.getUserId(), JsonParser.parseToJson(user.getArmy())));
+        return userRepository.saveAndFlush( new UserTable(user.getUserId()));
     }
 
     @Override

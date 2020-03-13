@@ -30,7 +30,7 @@ import java.io.IOException;
             try{
                 ObjectMapper mapper = new ObjectMapper();
 
-                // mapper.writeValue(new File("c:\\figure.json"), f);
+
 
                 jsonInString = mapper.writeValueAsString(f);
 
